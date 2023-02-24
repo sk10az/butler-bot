@@ -13,19 +13,9 @@ type Config struct {
 	WhitelistChatId int64  `yaml:"whitelist_chat_id"`
 }
 
-type DBConfig struct {
-	Host          string   `json:"host"`
-	ReadOnlyHosts []string `json:"read_only_hosts"`
-	Port          uint     `json:"port"`
-	User          string   `json:"user"`
-	Password      string   `json:"password"`
-	DBName        string   `json:"db_name"`
-	TZ            string   `json:"tz"`
-}
-
-func loadConfig() (*Config, error) {
+func LoadConfig() (*Config, error) {
 	var config Config
-	data, err := os.ReadFile("./config.yaml")
+	data, err := os.ReadFile("config/config.yaml")
 	if err != nil {
 		return nil, err
 	}
